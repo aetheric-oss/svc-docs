@@ -1,66 +1,71 @@
-# Software Design Document (SDD) - `svc-FIXME` 
+![Arrow Banner](https://github.com/Arrow-air/tf-github/raw/main/src/templates/doc-banner-services.png)
 
-<center>
+# Software Design Document (SDD) - `svc-docs`
 
-<img src="https://github.com/Arrow-air/tf-github/raw/main/src/templates/doc-banner-services.png" style="height:250px" />
+## :telescope: Overview
 
-</center>
+This document details the software implementation of docs.
 
-## Overview
+This service is responsible for docs
 
-This document details the software implementation of FIXME.
+### Metadata
 
-This service is responsible for FIXME
+| Attribute     | Description                                                       |
+| ------------- |-------------------------------------------------------------------|
+| Maintainer(s) | [Services Team](https://github.com/orgs/Arrow-air/teams/services) |
+| Stuckee       |  |
+| Status        | Draft                                                             |
 
-Attribute | Description
---- | ---
-Status | Draft
-
-## Related Documents
+## :books: Related Documents
 
 Document | Description
 --- | ---
 [High-Level Concept of Operations (CONOPS)](https://github.com/Arrow-air/se-services/blob/develop/docs/conops.md) | Overview of Arrow microservices.
 [High-Level Interface Control Document (ICD)](https://github.com/Arrow-air/se-services/blob/develop/docs/icd.md)  | Interfaces and frameworks common to all Arrow microservices.
-[Requirements - `svc-FIXME`](FIXME - generate a link specifically for this module's view in NocoDB) | Requirements and user stories for this microservice.
-[Concept of Operations - `svc-FIXME`](./conops.md) | Defines the motivation and duties of this microservice.
-[Interface Control Document (ICD) - `svc-FIXME`](./icd.md) | Defines the inputs and outputs of this microservice.
+[Requirements - `svc-docs`](docs - generate a link specifically for this module's view in NocoDB) | Requirements and user stories for this microservice.
+[Concept of Operations - `svc-docs`](./conops.md) | Defines the motivation and duties of this microservice.
+[Interface Control Document (ICD) - `svc-docs`](./icd.md) | Defines the inputs and outputs of this microservice.
 
-## Module Attributes
+## :dna: Module Attributes
 
-Attribute | Applies | Explanation
---- | --- | ---
-Safety Critical | ? | 
-Realtime | ? |
+| Attribute       | Applies | Explanation                                                             |
+| --------------- | ------- | ----------------------------------------------------------------------- |
+| Safety Critical | Yes/No  | |
+| Realtime        | Yes/No  | |
 
-## Global Variables
+## :globe_with_meridians: Global Variables
 
 **Statically Allocated Queues**
 
-FIXME
+docs
 
-## Logic
+## :gear: Logic
 
 ### Initialization
 
-FIXME Description of activities at init
+docs Description of activities at init
 
-### Loop
+### Control Loop
 
-FIXME Description of activities during loop
+docs Description of activities during loop
+As a GRPC server, this service awaits requests and executes handlers.
+
+All handlers **require** the following environment variables to be set:
+- docs
+
+For detailed sequence diagrams regarding request handlers, see [REST
+Handlers](#mailbox-rest-handlers).
+For detailed sequence diagrams regarding request handlers, see [gRPC
+Handlers](#speech_balloon-grpc-handlers).
 
 ### Cleanup
 
-FIXME Description of activities at cleanup
+docs Description of activities at cleanup
 
-## Interface Handlers
+## :mailbox: REST Handlers
 
-FIXME - What internal activities are triggered by messages at this module's interfaces?
+docs flowcharts for rest handlers
 
-## Tests
+## :speech_balloon: gRPC Handlers
 
-FIXME
-
-### Unit Tests
-
-FIXME
+docs flowcharts for gRPC handlers

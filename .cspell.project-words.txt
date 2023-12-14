@@ -28,3 +28,9 @@ adsb
 openapi
 dotenv
 NocoDB
+logtest
+oneshot
+Stuckee
+Refactorings
+Lcov
+seccomp

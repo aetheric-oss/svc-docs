@@ -19,7 +19,7 @@ use utoipa::OpenApi;
         )
     ),
     tags(
-        (name = "svc-template-rust", description = "svc-template-rust REST API")
+        (name = "svc-docs", description = "svc-docs REST API")
     )
 )]
 struct ApiDoc;
@@ -33,4 +33,19 @@ pub fn generate_openapi_spec(target: &str) -> Result<(), Box<dyn std::error::Err
     std::fs::write(target, output).expect("(ERROR) unable to write json string to file.");
 
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[tokio::test]
+    async fn test_openapi_spec_generation() {
+        crate::get_log_handle().await;
+        ut_info!("(test_openapi_spec_generation) Start.");
+
+        assert!(generate_openapi_spec("/tmp/generate_openapi_spec.out").is_ok());
+
+        ut_info!("(test_openapi_spec_generation) Success.");
+    }
 }

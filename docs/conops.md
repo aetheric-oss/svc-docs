@@ -1,35 +1,35 @@
-# Concept of Operations - `svc-FIXME`
+![Arrow Banner](https://github.com/Arrow-air/tf-github/raw/main/src/templates/doc-banner-services.png)
 
-<center>
+# Concept of Operations - `svc-docs`
 
-<img src="https://github.com/Arrow-air/tf-github/raw/main/src/templates/doc-banner-services.png" style="height:250px" />
+docs: Some of the headings below may not apply to your microservice. Remove if
+so.
 
-</center>
+## :telescope: Overview
 
-Attribute | Description
---- | ---
-Maintainer | [@Arrow-air/services](https://github.com/orgs/Arrow-air/teams)
-Status | Draft
-  
-FIXME: Some of the headings below may not apply to your microservice. Remove if so.
+docs - What does this microservice do, in brief?
 
-## Overview
+### Metadata
 
-FIXME - What does this microservice do, in brief?
+| Attribute     | Description                                                       |
+| ------------- |-------------------------------------------------------------------|
+| Maintainer(s) | [Services Team](https://github.com/orgs/Arrow-air/teams/services) |
+| Stuckee       |  |
+| Status        | Draft     
 
-## Related Documents
+## :books: Related Documents
 
 Document | Description
 --- | ---
 [High-Level Concept of Operations (CONOPS)](https://github.com/Arrow-air/se-services/blob/develop/docs/conops.md) | Overview of Arrow microservices.
 [High-Level Interface Control Document (ICD)](https://github.com/Arrow-air/se-services/blob/develop/docs/icd.md)  | Interfaces and frameworks common to all Arrow microservices.
-[Requirements - `svc-FIXME`](FIXME - generate a link specifically for this module's view in NocoDB) | Requirements and user stories for this microservice.
-[Interface Control Document (ICD) - `svc-FIXME`](./icd.md) | Defines the inputs and outputs of this microservice.
-[Software Design Document (SDD) - `svc-FIXME`](./sdd.md) | Specifies the internal activity of this microservice.
+[Requirements - `svc-docs`](docs - generate a link specifically for this module's view in NocoDB) | Requirements and user stories for this microservice.
+[Interface Control Document (ICD) - `svc-docs`](./icd.md) | Defines the inputs and outputs of this microservice.
+[Software Design Document (SDD) - `svc-docs`](./sdd.md) | Specifies the internal activity of this microservice.
 
-## Motivation
+## :raised_hands: Motivation
 
-FIXME - Why is it needed?
+docs - Why is it needed?
 
 ## Needs, Goals and Objectives of Envisioned System
 
