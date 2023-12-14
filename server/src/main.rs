@@ -1,28 +1,22 @@
 //! Main function starting the server and initializing dependencies.
 
-use clap::Parser;
-use dotenv::dotenv;
 use log::info;
-use svc_template_rust::config::Config;
-use svc_template_rust::grpc;
-use svc_template_rust::rest;
-use svc_template_rust::Cli;
+use svc_docs::*;
 
 /// Main entry point: starts gRPC Server on specified address and port
 #[tokio::main]
 #[cfg(not(tarpaulin_include))]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Will use default config settings if no environment vars are found.
-    let config = Config::from_env().unwrap_or_default();
+    let config = Config::try_from_env().unwrap_or_default();
 
-    dotenv().ok();
-    {
-        let log_cfg: &str = config.log_config.as_str();
-        if let Err(e) = log4rs::init_file(log_cfg, Default::default()) {
-            panic!("(logger) could not parse {}. {}", log_cfg, e);
-        }
-    }
+    // Try to load log configuration from the provided log file.
+    // Will default to stdout debug logging if the file can not be loaded.
+    load_logger_config_from_file(config.log_config.as_str())
+        .await
+        .or_else(|e| Ok::<(), String>(log::error!("(main) {}", e)))?;
 
+    info!("(main) Server startup.");
     // --------------------------------------------------
     // START REST SECTION
     // This section should be removed if there is no REST interface
@@ -36,13 +30,17 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         return rest::generate_openapi_spec(&target);
     }
 
-    tokio::spawn(rest::server::rest_server(config.clone()));
+    tokio::spawn(rest::server::rest_server(config.clone(), None));
     // --------------------------------------------------
     // END REST SECTION
     // --------------------------------------------------
 
-    let _ = tokio::spawn(grpc::server::grpc_server(config)).await;
+    tokio::spawn(grpc::server::grpc_server(config, None)).await?;
 
-    info!("Server shutdown.");
+    info!("(main) Server shutdown.");
+
+    // Make sure all log message are written/ displayed before shutdown
+    log::logger().flush();
+
     Ok(())
 }
